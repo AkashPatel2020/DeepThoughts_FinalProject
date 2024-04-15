@@ -7,15 +7,17 @@ def decrypt_location(encrypted_data_file, english_file):
     # Open and load the encrypted location data from the JSON file
     with open(encrypted_data_file, 'r') as f:
         encrypted_data = json.load(f)
-
+    #print(encrypted_data)
+    myLoc = encrypted_data["Deep Thought"]
+    print(myLoc)
     # Open and read the English dictionary file
     with open(english_file, 'r', encoding='utf-8') as f:
         english_words = f.readlines()
 
     decrypted_location = ''
     # Decrypt each index to get the corresponding word from the English dictionary
-    for index in encrypted_data:
-        word_index = int(index) - 1
+    for index in myLoc:
+        word_index = int(index) # - 1
         decrypted_location += english_words[word_index].strip() + ' '
 
     return decrypted_location.strip()  # Return the decrypted location
