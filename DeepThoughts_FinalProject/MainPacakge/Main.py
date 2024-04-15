@@ -37,11 +37,11 @@ def display_group_photo(photo_path):
 
 def main():
     # Decrypt the location data and print it
-    location = decrypt_location("EncryptedGroupHints.json", "UCEnglish.txt")
+    location = decrypt_location("EncryptedGroupHints Spring 2024 Section 002.json", "UCEnglish.txt")
     print("Decrypted Location:", location)
 
     # Decrypt the movie title
-    with open("TeamsAndEncryptedMessagesForDistribution.json", 'r') as f:
+    with open("TeamsAndEncryptedMessagesForDistribution - 002.json", 'r') as f:
         encrypted_data = json.load(f)
     encrypted_title = encrypted_data["YourTeamName"]  # Replace "YourTeamName" with your actual team name
     key = b'your_key_here'  # Replace with the actual key
