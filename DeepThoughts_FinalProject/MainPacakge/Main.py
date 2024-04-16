@@ -1,40 +1,29 @@
-import json  # Import the JSON module to work with JSON data
-from cryptography.fernet import Fernet  # Import Fernet from the cryptography module for encryption/decryption
-from PIL import Image  # Import Image module from the Python Imaging Library (PIL) for image processing
+import json
+from cryptography.fernet import Fernet
+from PIL import Image
 
 # Function to decrypt the location data
 def decrypt_location(encrypted_data_file, english_file):
-    # Open and load the encrypted location data from the JSON file
     with open(encrypted_data_file, 'r') as f:
         encrypted_data = json.load(f)
-    #print(encrypted_data)
     myLoc = encrypted_data["Deep Thought"]
-    print(myLoc)
-    # Open and read the English dictionary file
     with open(english_file, 'r', encoding='utf-8') as f:
         english_words = f.readlines()
-
     decrypted_location = ''
-    # Decrypt each index to get the corresponding word from the English dictionary
     for index in myLoc:
-        word_index = int(index) # - 1
+        word_index = int(index)
         decrypted_location += english_words[word_index].strip() + ' '
-
-    return decrypted_location.strip()  # Return the decrypted location
+    return decrypted_location.strip()
 
 # Function to decrypt the movie title
 def decrypt_movie_title(encrypted_message, key):
-    # Initialize the Fernet cipher with the provided key
     f = Fernet(key)
-    # Decrypt the encrypted message using the Fernet cipher and decode it
     decrypted_message = f.decrypt(encrypted_message.encode()).decode('utf-8')
-    return decrypted_message  # Return the decrypted movie title
+    return decrypted_message
 
 # Function to display the group photo
 def display_group_photo(photo_path):
-    # Open the image file using PIL
     image = Image.open(photo_path)
-    # Display the image
     image.show()
 
 def main():
@@ -45,8 +34,8 @@ def main():
     # Decrypt the movie title
     with open("TeamsAndEncryptedMessagesForDistribution - 002.json", 'r') as f:
         encrypted_data = json.load(f)
-    encrypted_title = encrypted_data["YourTeamName"]  # Replace "YourTeamName" with your actual team name
-    key = b'your_key_here'  # Replace with the actual key
+    encrypted_title = encrypted_data["Deep Thought"][0]  # Assuming it's a list, access the first element
+    key = "t7WyuS-VCj3eb9HE0OHPhva2b30FSid88Z5nSiYUo0c="
     movie_title = decrypt_movie_title(encrypted_title, key)
     print("Decrypted Movie Title:", movie_title)
 
@@ -54,4 +43,4 @@ def main():
     display_group_photo("group_photo.jpg")
 
 if __name__ == "__main__":
-    main()  # Execute the main function when the script is run directly
+    main()
