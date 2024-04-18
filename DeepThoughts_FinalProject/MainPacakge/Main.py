@@ -6,13 +6,6 @@ from cryptography.fernet import Fernet
 from PIL import Image
 
 
-
-
-# Function to display the group photo
-def display_group_photo(photo_path):
-    image = Image.open(photo_path)
-    image.show()
-
 def main():
     # Decrypt the location data and print it
     location = decrypt_location("EncryptedGroupHints Spring 2024 Section 002.json", "UCEnglish.txt")
@@ -26,8 +19,19 @@ def main():
     movie_title = decrypt_movie_title(encrypted_title, key)
     print("Decrypted Movie Title:", movie_title)
 
-    # Display the group photo
-    display_group_photo("group_photo.jpg")
+    
+ 
+    # Load the image
+    image = load_image("../GroupPacakge/birds.jpg")
+
+    # Check if image loaded successfully
+    if image:
+        # Display the image
+        image.show()
+   
+
+   
+   
 
 if __name__ == "__main__":
     main()
