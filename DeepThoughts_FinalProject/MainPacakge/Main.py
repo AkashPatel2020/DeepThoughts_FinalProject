@@ -1,25 +1,12 @@
 import json
+from LocationPackage.Location import*
+from MoviePackage.Movie import*
+from GroupPacakge.Groupic import*
 from cryptography.fernet import Fernet
 from PIL import Image
 
-# Function to decrypt the location data
-def decrypt_location(encrypted_data_file, english_file):
-    with open(encrypted_data_file, 'r') as f:
-        encrypted_data = json.load(f)
-    myLoc = encrypted_data["Deep Thought"]
-    with open(english_file, 'r', encoding='utf-8') as f:
-        english_words = f.readlines()
-    decrypted_location = ''
-    for index in myLoc:
-        word_index = int(index)
-        decrypted_location += english_words[word_index].strip() + ' '
-    return decrypted_location.strip()
 
-# Function to decrypt the movie title
-def decrypt_movie_title(encrypted_message, key):
-    f = Fernet(key)
-    decrypted_message = f.decrypt(encrypted_message.encode()).decode('utf-8')
-    return decrypted_message
+
 
 # Function to display the group photo
 def display_group_photo(photo_path):
