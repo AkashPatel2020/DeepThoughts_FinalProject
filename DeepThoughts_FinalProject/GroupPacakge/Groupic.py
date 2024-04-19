@@ -1,3 +1,13 @@
+# Name:Akash Patel and Bill Nicholson
+# email:patel5a5@mail.uc.edu, nichodlw@mial.uc.edu
+# Assignment Title: Assignment 11 Final Project
+# Due Date:04/23/2024
+# Course: IS 3050
+# Semester/Year: Fall 2024
+# File Name: DeepThoughts_FinalProject
+# Brief Description of this file: We have drypetd the a location and the movie title, and also got a picture showing our qoute
+# Citations:ChatGpt 
+# Anything else that's relevant:
 from PIL import Image
 
 def load_image(filename):
@@ -15,8 +25,4 @@ def load_image(filename):
     return myimage
 
 # Open an image file. The default path is where this python module is
-im = load_image("../GroupPacakge/birds.jpg")
-if im:
-    print(im.width, im.height, im.mode, im.format)
-else:
-    print("Failed to open image")
+im = load_image("../GroupPacakge/Baribe.jpg")
